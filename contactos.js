@@ -6,11 +6,10 @@ function agregarValores(){
     var Lastname=document.getElementById("Lastname").value;
     var Email=document.getElementById("Email").value;
     var Phonenumber=document.getElementById("Phonenumber").value;
-    var Ubication=document.getElementById("Ubication").value;
+    var Phonenumber=document.getElementById("Ubication").value;
     count++;
 
-       if ( Name.length>0 || Lastname.length>0)
-        {
+    if ( Name.length>0 || Lastname.length>0) {
         var tbody = document.getElementById("mytable").getElementsByTagName("TBODY")[0];
 
         var attrId = document.createAttribute('id'); 
@@ -24,10 +23,12 @@ function agregarValores(){
         td3.appendChild(document.createTextNode(Email));
         var td4 = document.createElement("TD");
         td4.appendChild(document.createTextNode(Phonenumber));
-        var td5 = document.createElement("TD");
+         var td5 = document.createElement("TD");
         td5.appendChild(document.createTextNode(Ubication));
         var td6 = document.createElement("TD");
-        td6.appendChild(crearButton(count));
+        td6.appendChild(crearButton(count, "delete"));
+        td6.appendChild(crearButton(count, "update"));
+        
 
         var row = document.createElement("TR");
         row.setAttributeNode(attrId);
@@ -38,36 +39,65 @@ function agregarValores(){
         row.appendChild(td5);
         row.appendChild(td6);
         tbody.appendChild(row);       
-       }
+    }
 
-       document.getElementById("Name").value = "";
-       document.getElementById("Lastname").value = "";
-       document.getElementById("Email").value = "";
-       document.getElementById("Phonenumber").value = "";
-        document.getElementById("Ubication").value = "";
+    document.getElementById("Name").value = "";
+    document.getElementById("Lastname").value = "";
+    document.getElementById("Email").value = "";
+    document.getElementById("Phonenumber").value = "";
+    document.getElementById("Ubication").value = "";
 }
-       function eliminarValor(id){
 
-        var row = document.getElementById(id);
-        row.parentNode.removeChild(row);
-        }
+function eliminarValor(id){
 
-        function crearButton(id)
-        {
-            var button=document.createElement ("input");
-            var attrType=document.createAttribute('type');
-            attrType.value="button";
-            var attrValue=document.createAttribute('value');
-            attrValue.value="delete";
-            var attrOnclick=document.createAttribute('onclick');
-            attrOnclick.value="eliminarValor("+count+");";
+    var row = document.getElementById(id);
+    row.parentNode.removeChild(row);
+}
 
-            button.setAttributeNode(attrType);
-            button.setAttributeNode(attrValue);
-            button.setAttributeNode(attrOnclick);
+function actualizarValor(id){
+    var row = document.getElementById(id);
 
-            return button;
+    var Name=document.getElementById("Name").value;
+    var Lastname=document.getElementById("Lastname").value;
+    var Email=document.getElementById("Email").value;
+    var Phonenumber=document.getElementById("Phonenumber").value;
+    var Phonenumber=document.getElementById("Ubication").value;
 
-            
-        }
-       
+    if ( Name.length>0 || Lastname.length>0) {
+        row.childNodes[0].textContent = Name;
+        row.childNodes[1].textContent = Lastname;
+        row.childNodes[2].textContent = Email;
+        row.childNodes[3].textContent = Phonenumber;
+        row.childNodes[4].textContent = Ubication;
+    }
+
+    document.getElementById("Name").value = "";
+    document.getElementById("Lastname").value = "";
+    document.getElementById("Email").value = "";
+    document.getElementById("Phonenumber").value = "";
+    document.getElementById("Ubication").value = "";
+}
+
+function crearButton(id, type)
+ {
+    var button=document.createElement ("input");
+    var attrType=document.createAttribute('type');
+    attrType.value="button";
+    if (type == "delete") {
+        var attrValue=document.createAttribute('value');
+        attrValue.value="delete";
+        var attrOnclick=document.createAttribute('onclick');
+       attrOnclick.value="eliminarValor("+count+");";
+       }  else {
+        var attrValue=document.createAttribute('value');
+        attrValue.value="update";
+        var attrOnclick=document.createAttribute('onclick');
+        attrOnclick.value="actualizarValor("+count+");";
+    }
+     }
+
+    button.setAttributeNode(attrType);
+    button.setAttributeNode(attrValue);
+    button.setAttributeNode(attrOnclick);
+
+    return button;
