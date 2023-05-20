@@ -6,6 +6,7 @@ function agregarValores(){
     var Lastname=document.getElementById("Lastname").value;
     var Email=document.getElementById("Email").value;
     var Phonenumber=document.getElementById("Phonenumber").value;
+    var Ubication=document.getElementById("Ubication").value;
     count++;
 
        if ( Name.length>0 || Lastname.length>0)
@@ -24,7 +25,9 @@ function agregarValores(){
         var td4 = document.createElement("TD");
         td4.appendChild(document.createTextNode(Phonenumber));
         var td5 = document.createElement("TD");
-        td5.appendChild(crearButton(count));
+        td5.appendChild(document.createTextNode(Ubication));
+        var td6 = document.createElement("TD");
+        td6.appendChild(crearButton(count));
 
         var row = document.createElement("TR");
         row.setAttributeNode(attrId);
@@ -33,6 +36,7 @@ function agregarValores(){
         row.appendChild(td3);
         row.appendChild(td4);
         row.appendChild(td5);
+        row.appendChild(td6);
         tbody.appendChild(row);       
        }
 
@@ -40,6 +44,7 @@ function agregarValores(){
        document.getElementById("Lastname").value = "";
        document.getElementById("Email").value = "";
        document.getElementById("Phonenumber").value = "";
+        document.getElementById("Ubication").value = "";
 }
        function eliminarValor(id){
 
