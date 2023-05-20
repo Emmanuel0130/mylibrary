@@ -1,3 +1,5 @@
+var count=0;
+
 function agregarValores(){
 
     var Name=document.getElementById("Name").value;
@@ -39,20 +41,21 @@ function agregarValores(){
        document.getElementById("Email").value = "";
        document.getElementById("Phonenumber").value = "";
 }
-       function EliminarValor(id){
+       function eliminarValor(id){
 
         var row = document.getElementById(id);
         row.parentNode.removeChild(row);
         }
 
-        function crearButton(id){
-            var button = document.createElement ("input");
-            var attrType = document.createAttribute('type');
-            attrType.value = "button";
-            var attrValue = document.createAttribute('value');
-            attrValue.value = "delete";
-            var attrOnclick = document.createAttribute('onclick');
-            attrOnclick.value = "eliminarValor("+count+");";
+        function crearButton(id)
+        {
+            var button=document.createElement ("input");
+            var attrType=document.createAttribute('type');
+            attrType.value="button";
+            var attrValue=document.createAttribute('value');
+            attrValue.value="delete";
+            var attrOnclick=document.createAttribute('onclick');
+            attrOnclick.value="eliminarValor("+count+");";
 
             button.setAttributeNode(attrType);
             button.setAttributeNode(attrValue);
